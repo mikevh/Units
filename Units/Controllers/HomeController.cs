@@ -11,18 +11,16 @@ namespace Units.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly Lazy<UnitOfWork> _uow;
+        private readonly IUnitOfWork _uow;
 
-        private UnitOfWork uow => _uow.Value;
-
-        public HomeController()
+        public HomeController(IUnitOfWork uow)
         {
-            _uow = new Lazy<UnitOfWork>(() => new UnitOfWork(new ApplicationDbContext()));
+            _uow = uow;
         }
 
         public async Task<ActionResult> Index()
         {
-            var s = await uow.Students.Where().FirstAsync();
+            var s = await _uow.Students.Where().FirstAsync();
 
             //var student = new Student { Name = "bob" };
             //var course = new Course { Title = "cs 101" };

@@ -1,17 +1,28 @@
 ﻿using System;
+using System.Data.Entity;
 
 namespace Units.Models
 {
-    public class UnitOfWork : IDisposable
+    public interface IUnitOfWork : IDisposable
     {
-        private readonly ApplicationDbContext _db;
+        IStudentRepository Students { get; }
+        ICourseRepository Courses { get; }
+        IGradeRepository Grades { get; }
+        ITododRepository Todos { get; }
+
+        int Save();
+    }
+
+    public class UnitOfWork : IUnitOfWork, IDisposable
+    {
+        private readonly DbContext _db;
 
         private IStudentRepository students;
         private ICourseRepository courses;
         private ITododRepository todos;
         private IGradeRepository grades;
         
-        public UnitOfWork(ApplicationDbContext db)
+        public UnitOfWork(DbContext db)
         {
             _db = db;
         }
