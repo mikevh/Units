@@ -29,5 +29,10 @@ namespace Units.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Todo> Todos { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Student> Student { get; set; }
+        public DbSet<Grade> Grades { get; set; }
     }
 }

@@ -1,28 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Units.Models;
 
 namespace Units.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        private readonly Lazy<UnitOfWork> _uow;
+
+        private UnitOfWork uow => _uow.Value;
+
+        public HomeController()
         {
-            return View();
+            _uow = new Lazy<UnitOfWork>(() => new UnitOfWork(new ApplicationDbContext()));
         }
 
-        public ActionResult About()
+        public async Task<ActionResult> Index()
         {
-            ViewBag.Message = "Your application description page.";
+            var s = await uow.Students.Where().FirstAsync();
 
-            return View();
-        }
+            //var student = new Student { Name = "bob" };
+            //var course = new Course { Title = "cs 101" };
+            //var grade = new Grade { Student = student, Course = course, Letter = "a-" };
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+            //uow.Grades.Upsert(grade);
+            
+            //uow.Save();
 
             return View();
         }
