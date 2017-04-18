@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using Units.Models;
+using Units.Data;
 
 namespace Units.Controllers
 {

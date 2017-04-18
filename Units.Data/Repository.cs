@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Units.Models
+namespace Units.Data
 {
     public interface IRepository<T>
     {

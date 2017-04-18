@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Data.Entity;
 using System.Reflection;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
-using Units.Models;
+using Units.Data;
 
 namespace Units
 {
@@ -35,7 +31,7 @@ namespace Units
             builder.RegisterType<StudentRepo>().As<IStudentRepository>();
             builder.RegisterType<CourseRepo>().As<ICourseRepository>();
             builder.RegisterType<TodoRepo>().As<ITododRepository>();
-            builder.RegisterType<ApplicationDbContext>().As<DbContext>();
+            builder.RegisterType<UnitsDbContext>().As<DbContext>().InstancePerRequest();
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

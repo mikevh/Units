@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 
-namespace Units.Models
+namespace Units.Data
 {
     public interface IGradeRepository : IRepository<Grade>
     {

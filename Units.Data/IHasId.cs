@@ -1,4 +1,4 @@
-﻿namespace Units.Models
+﻿namespace Units.Data
 {
     public interface IHasId
     {

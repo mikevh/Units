@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 
-namespace Units.Models
+namespace Units.Data
 {
     public interface IStudentRepository : IRepository<Student>
     {

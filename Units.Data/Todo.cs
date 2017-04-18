@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 
-namespace Units.Models
+namespace Units.Data
 {
     public interface ITododRepository : IRepository<Todo>
     {

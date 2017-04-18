@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 
-namespace Units.Models
+namespace Units.Data
 {
     public interface IUnitOfWork : IDisposable
     {
