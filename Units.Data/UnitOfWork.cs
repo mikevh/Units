@@ -16,14 +16,16 @@ namespace Units.Data
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
         private readonly DbContext _db;
+        private readonly ICacher _cacher;
 
         private IStudentRepository students;
         private ICourseRepository courses;
         private ITododRepository todos;
         private IGradeRepository grades;
         
-        public UnitOfWork(DbContext db)
+        public UnitOfWork(DbContext db, ICacher cache)
         {
+            _cacher = cache;
             _db = db;
         }
 
@@ -39,6 +41,7 @@ namespace Units.Data
         }
 
         private bool disposed;
+
         protected virtual void Dispose(bool disposing)
         {
             if (!disposed)

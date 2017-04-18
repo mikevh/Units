@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 
 namespace Units.Data
@@ -15,6 +16,7 @@ namespace Units.Data
         }
     }
 
+    [Table("Grades")]
     public class Grade : TimeStamps, IHasId
     {
         public int Id { get; set; }
@@ -23,7 +25,7 @@ namespace Units.Data
         [Required, MaxLength(2)]
         public string Letter { get; set; }
 
-        public virtual Student Student { get; set; }
-        public virtual Course Course { get; set; }
+        public Student Student { get; set; }
+        public Course Course { get; set; }
     }
 }

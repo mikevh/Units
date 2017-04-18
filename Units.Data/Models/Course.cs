@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace Units.Data
 {
@@ -21,6 +24,6 @@ namespace Units.Data
         public int Id { get; set; }
         public string Title { get; set; }
 
-        public virtual ICollection<Student> Students { get; set; }
+        public ICollection<Student> Students { get; set; }
     }
 }

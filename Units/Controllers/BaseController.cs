@@ -20,7 +20,7 @@ namespace Units.Controllers
             _repo = repo;
         }
 
-        public async Task<ActionResult> Index()
+        public virtual async Task<ActionResult> Index()
         {
             var rv = await _repo.Where().ToListAsync();
             return View(rv);
