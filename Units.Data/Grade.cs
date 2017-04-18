@@ -15,7 +15,7 @@ namespace Units.Data
         }
     }
 
-    public class Grade : IHasId
+    public class Grade : TimeStamps, IHasId
     {
         public int Id { get; set; }
         public int StudentId { get; set; }

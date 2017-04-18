@@ -16,7 +16,7 @@ namespace Units.Data
     }
 
     [Table("Courses")]
-    public class Course : IHasId
+    public class Course : TimeStamps, IHasId
     {
         public int Id { get; set; }
         public string Title { get; set; }

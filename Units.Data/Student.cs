@@ -14,7 +14,7 @@ namespace Units.Data
         }
     }
 
-    public class Student : IHasId
+    public class Student : TimeStamps, IHasId
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -23,7 +23,7 @@ namespace Units.Data
     }
 
     [Table("Todos")]
-    public class Todo : IHasId
+    public class Todo : TimeStamps, IHasId
     {
         public int Id { get; set; }
         public string Name { get; set; }

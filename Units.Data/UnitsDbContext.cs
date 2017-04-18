@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 
 namespace Units.Data
 {
@@ -6,6 +7,12 @@ namespace Units.Data
     {
         public UnitsDbContext() : base("name=DefaultConnection")
         {
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Properties<DateTime>().Configure(c => c.HasColumnType("datetime2"));
+            base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<Todo> Todos { get; set; }

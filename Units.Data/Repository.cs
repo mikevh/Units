@@ -40,10 +40,20 @@ namespace Units.Data
         {
             if(obj.Id == default(int))
             {
+                var ts = obj as IHasTimeStamps;
+                if(ts != null)
+                {
+                    ts.CreatedOn = DateTime.UtcNow;
+                }
                 _set.Add(obj);
             }
             else
             {
+                var ts = obj as IHasTimeStamps;
+                if (ts != null)
+                {
+                    ts.UpdatedOn = DateTime.UtcNow;
+                }
                 _db.Entry(obj).State = EntityState.Modified;
             }
         }
