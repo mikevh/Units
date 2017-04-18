@@ -2,7 +2,6 @@
     ViewBag.Title = "Home Page";
 }
 
-@*@foreach(var t in ViewBag.model.Todos)
-{
-    <p>@t.Id: @t.Name</p>
-}*@
+<p>@Html.ActionLink("Students", "Index", "Students")</p>
+<p>@Html.ActionLink("Courses", "Index", "Courses")</p>
+<p>@Html.ActionLink("Grades", "Index", "Grades")</p>

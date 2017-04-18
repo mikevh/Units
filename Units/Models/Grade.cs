@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 
 namespace Units.Models
 {
@@ -19,6 +20,7 @@ namespace Units.Models
         public int Id { get; set; }
         public int StudentId { get; set; }
         public int CourseId { get; set; }
+        [Required, MaxLength(2)]
         public string Letter { get; set; }
 
         public virtual Student Student { get; set; }
