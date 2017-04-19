@@ -211,6 +211,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
+    <Compile Include="Controllers\TodosController.cs" />
     <Compile Include="ErrorHandler\AiHandleErrorAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -308,6 +309,11 @@
     <Content Include="Views\Grades\Edit.cshtml" />
     <Content Include="Views\Grades\Index.cshtml" />
     <Content Include="Views\Status\Index.cshtml" />
+    <Content Include="Views\Todos\Create.cshtml" />
+    <Content Include="Views\Todos\Delete.cshtml" />
+    <Content Include="Views\Todos\Details.cshtml" />
+    <Content Include="Views\Todos\Edit.cshtml" />
+    <Content Include="Views\Todos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
