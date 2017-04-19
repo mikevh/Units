@@ -1,7 +1,11 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using NLog;
 using Units.Data;
 
 namespace Units.Controllers
@@ -10,19 +14,20 @@ namespace Units.Controllers
     {
         public readonly IRepository<T> _repo;
 
-        protected virtual async Task SetViewBag()
-        {
-            await Task.Run(() => { });
-        }
-
         protected BaseController(IRepository<T> repo)
         {
             _repo = repo;
         }
 
+        protected virtual async Task SetViewBag()
+        {
+            await Task.Run(() => { });
+        }
+
         public virtual async Task<ActionResult> Index()
         {
             var rv = await _repo.Where().ToListAsync();
+
             return View(rv);
         }
 

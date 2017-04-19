@@ -8,6 +8,8 @@ namespace Units.Data
     public interface ICacher
     {
         T Get<T>(string key, Func<T> getter, int? timeout = null) where T : class;
+        bool Connected { get; }
+        void Clear(string key);
     }
 
     public class RedisCache : ICacher
@@ -17,9 +19,11 @@ namespace Units.Data
         private DateTime lastError;
 
         private static bool Enable => bool.Parse(ConfigurationManager.AppSettings["RedisEnable"] ?? "true");
-        private static string Host => ConfigurationManager.AppSettings["RedisHost"] ?? "localhostx";
+        private static string Host => ConfigurationManager.AppSettings["RedisHost"] ?? "localhost";
         private static int RetryCooldown => int.Parse(ConfigurationManager.AppSettings["RedisRetryCooldown"] ?? "10");
         private static int Lifetime => int.Parse(ConfigurationManager.AppSettings["RedisLifetime"] ?? "60");
+
+        public bool Connected => DB != null;
 
         private IDatabase DB
         {
@@ -41,6 +45,11 @@ namespace Units.Data
         public RedisCache(ILogger logger)
         {
             _logger = logger;
+        }
+
+        public void Clear(string key)
+        {
+            DB.KeyDelete(key);
         }
 
         public T Get<T>(string key, Func<T> getter, int? lifetime = null) where T : class
