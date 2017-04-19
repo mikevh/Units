@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
-using System.Linq;
-using System.Linq.Expressions;
 
-namespace Units.Data
+namespace Units.Data.Models
 {
     public interface ICourseRepository : IRepository<Course>
     {
@@ -21,6 +18,11 @@ namespace Units.Data
     [Table("Courses")]
     public class Course : TimeStamps, IHasId
     {
+        public Course()
+        {
+            Students = new HashSet<Student>();
+        }
+
         public int Id { get; set; }
         public string Title { get; set; }
 

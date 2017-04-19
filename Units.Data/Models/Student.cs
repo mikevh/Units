@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 
-namespace Units.Data
+namespace Units.Data.Models
 {
     public interface IStudentRepository : IRepository<Student>
     {
@@ -16,10 +16,16 @@ namespace Units.Data
 
     public class Student : TimeStamps, IHasId
     {
+        public Student()
+        {
+            Grades = new HashSet<Grade>();
+            Courses = new HashSet<Course>();
+        }
+
         public int Id { get; set; }
         public string Name { get; set; }
 
         public ICollection<Grade> Grades { get; set; }
-        public ICollection<Course> Course { get; set; }
+        public ICollection<Course> Courses { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using Units.Data.Models;
 
 namespace Units.Data
 {

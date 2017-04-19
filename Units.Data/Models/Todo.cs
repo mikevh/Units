@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 
-namespace Units.Data
+namespace Units.Data.Models
 {
     public interface ITododRepository : IRepository<Todo>
     {
@@ -18,7 +19,7 @@ namespace Units.Data
 
         public IEnumerable<Todo> OverdueTasks()
         {
-            return Where(x => x.Id == 0);
+            return Where(x => !x.IsDone && x.Due < DateTime.UtcNow);
         }
     }
 
@@ -27,5 +28,7 @@ namespace Units.Data
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public bool IsDone { get; set; }
+        public DateTime Due { get; set; }
     }
 }

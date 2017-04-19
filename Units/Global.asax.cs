@@ -7,6 +7,7 @@ using Autofac;
 using Autofac.Integration.Mvc;
 using NLog;
 using Units.Data;
+using Units.Data.Models;
 
 namespace Units
 {

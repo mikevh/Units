@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using Units.Data.Models;
 
 namespace Units.Data
 {
@@ -15,9 +16,9 @@ namespace Units.Data
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<Todo> Todos { get; set; }
-        public DbSet<Course> Courses { get; set; }
-        public DbSet<Student> Student { get; set; }
-        public DbSet<Grade> Grades { get; set; }
+        public virtual DbSet<Todo> Todos { get; set; }
+        public virtual DbSet<Course> Courses { get; set; }
+        public virtual DbSet<Student> Student { get; set; }
+        public virtual DbSet<Grade> Grades { get; set; }
     }
 }
