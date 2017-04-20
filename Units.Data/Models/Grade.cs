@@ -1,9 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
-using Units.Data.Models;
 
-namespace Units.Data
+namespace Units.Data.Models
 {
     public interface IGradeRepository : IRepository<Grade>
     {
