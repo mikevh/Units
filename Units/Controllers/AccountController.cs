@@ -139,6 +139,7 @@ namespace Units.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            //ViewBag.Timezones = new SelectList(await )
             return View();
         }
 
