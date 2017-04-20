@@ -1,9 +1,8 @@
-﻿using Units.Data;
-using Units.Data.Models;
+﻿using Units.Data.Models;
 
 namespace Units.Controllers
 {
-    public class TodosController : BaseController<Todo>
+    public class TodosController : BaseController<Todo, TodoDTO>
     {
         public TodosController(ITododRepository repo) : base(repo)
         {

@@ -29,4 +29,15 @@ namespace Units.Data
         public Student Student { get; set; }
         public Course Course { get; set; }
     }
+
+    public class GradeDTO
+    {
+        public int Id { get; set; }
+        public int StudentId { get; set; }
+        public int CourseId { get; set; }
+        public string Letter { get; set; }
+
+        public StudentDTO Student { get; set; }
+        public CourseDTO Course { get; set; }
+    }
 }

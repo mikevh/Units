@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using NLog;
 using Units.Data;
 
 namespace Units.Controllers
 {
-    public abstract class BaseController<T> : Controller
+    public abstract class BaseController<T, TDTO> : Controller
     {
         public readonly IRepository<T> _repo;
 
@@ -21,12 +18,12 @@ namespace Units.Controllers
 
         protected virtual async Task SetViewBag()
         {
-            await Task.Run(() => { });
+            
         }
 
         public virtual async Task<ActionResult> Index()
         {
-            var rv = await _repo.Where().ToListAsync();
+            var rv =  (await _repo.Where().ToListAsync()).Map<TDTO>();
 
             return View(rv);
         }
@@ -42,7 +39,7 @@ namespace Units.Controllers
             {
                 return HttpNotFound();
             }
-            return View(obj);
+            return View(obj.Map<TDTO>());
         }
 
         public async Task<ActionResult> Create()
@@ -53,11 +50,11 @@ namespace Units.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(T obj)
+        public async Task<ActionResult> Create(TDTO obj)
         {
             if (ModelState.IsValid)
             {
-                _repo.Upsert(obj);
+                _repo.Upsert(obj.Map<T>());
                 await _repo.Save();
                 return RedirectToAction("Index");
             }
@@ -77,16 +74,16 @@ namespace Units.Controllers
                 return HttpNotFound();
             }
             await SetViewBag();
-            return View(obj);
+            return View(obj.Map<TDTO>());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(T obj)
+        public async Task<ActionResult> Edit(TDTO obj)
         {
             if (ModelState.IsValid)
             {
-                _repo.Upsert(obj);
+                _repo.Upsert(obj.Map<T>());
                 await _repo.Save();
                 return RedirectToAction("Index");
             }
@@ -105,7 +102,7 @@ namespace Units.Controllers
             {
                 return HttpNotFound();
             }
-            return View(obj);
+            return View(obj.Map<TDTO>());
         }
 
         [HttpPost, ActionName("Delete")]

@@ -28,4 +28,12 @@ namespace Units.Data.Models
 
         public ICollection<Student> Students { get; set; }
     }
+
+    public class CourseDTO
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+
+        public IEnumerable<StudentDTO> Students { get; set; }
+    }
 }

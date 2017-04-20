@@ -6,7 +6,7 @@ using Units.Data.Models;
 
 namespace Units.Controllers
 {
-    public class GradesController : BaseController<Grade>
+    public class GradesController : BaseController<Grade, GradeDTO>
     {
         private readonly IStudentRepository _students;
         private readonly ICourseRepository _courses;
